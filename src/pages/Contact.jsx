@@ -15,10 +15,13 @@ const Contact = () => {
 
     const handleSend = (e) => {
         e.preventDefault();
-        const { name, message } = formData;
+        const { name, message, email } = formData;
         const subject = `Portfolio Contact from ${name}`;
-        const body = `${message}%0D%0A%0D%0AFrom: ${name} (${formData.email})`;
-        window.location.href = `mailto:johndenver9900@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Use regular newlines and let encodeURIComponent handle them
+        const bodyContent = `${message}\n\nFrom: ${name} (${email})`;
+
+        window.location.href = `mailto:johndenver9900@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
     };
 
     return (
