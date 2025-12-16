@@ -54,7 +54,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-6">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=johndenver9900@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=johndenver9900@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
                             <div className="p-3 bg-blue-50 text-primary rounded-full mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <Mail size={24} />
                             </div>
