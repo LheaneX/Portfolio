@@ -14,7 +14,7 @@ const About = () => {
                 </h2>
                 <div className="prose prose-lg text-slate-600">
                     <p className="mb-6">
-                        I am a dedicated software Science Student with a strong focus on frontend development and DevOps practices.
+                        I am a dedicated Computer Science Student with a strong focus on frontend development and DevOps practices.
                         My journey in tech is driven by a curiosity to understand how things work under the hood and a desire to build
                         efficient, user-centric applications.
                     </p>
