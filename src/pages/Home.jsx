@@ -36,7 +36,7 @@ const Home = () => {
                 >
                     <span className="text-primary font-semibold tracking-wider uppercase mb-4 block">Welcome to my portfolio</span>
                     <h1 className="text-6xl md:text-8xl font-bold mb-6 text-slate-900 tracking-tight">
-                        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">LheaneX</span>
+                        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">John Denver Macaraig</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
                         Crafting exceptional digital experiences with modern web technologies.

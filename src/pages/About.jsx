@@ -24,14 +24,39 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-white rounded-lg shadow-sm border border-slate-100">
-                        <h4 className="font-bold text-2xl text-primary">3+</h4>
-                        <p className="text-sm text-slate-500">Years Experience</p>
-                    </div>
-                    <div className="p-4 bg-white rounded-lg shadow-sm border border-slate-100">
-                        <h4 className="font-bold text-2xl text-primary">20+</h4>
-                        <p className="text-sm text-slate-500">Projects Completed</p>
+                <div className="mt-8">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6">Education</h3>
+                    <div className="space-y-6 border-l-2 border-slate-100 pl-6 ml-2">
+                        <div className="relative">
+                            <span className="absolute -left-[31px] top-2 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm"></span>
+                            <span className="text-sm font-semibold text-primary uppercase tracking-wider">2021 - Present</span>
+                            <h4 className="text-lg font-bold text-slate-900 mt-1">Cavite State University - Carmona Campus</h4>
+                            <p className="text-slate-500">Carmona, Cavite</p>
+                        </div>
+                        <div className="relative">
+                            <span className="absolute -left-[31px] top-2 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></span>
+                            <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">2018 - 2020</span>
+                            <h4 className="text-lg font-bold text-slate-900 mt-1">Philippine Technological Institute of Science, Arts, and Trade</h4>
+                            <p className="text-slate-500">General Mariano Alvarez Cavite</p>
+                        </div>
+                        <div className="relative">
+                            <span className="absolute -left-[31px] top-2 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></span>
+                            <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">2016 - 2018</span>
+                            <h4 className="text-lg font-bold text-slate-900 mt-1">Bulihan National Highschool</h4>
+                            <p className="text-slate-500">Bulihan Silang Cavite</p>
+                        </div>
+                        <div className="relative">
+                            <span className="absolute -left-[31px] top-2 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></span>
+                            <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">2014 - 2016</span>
+                            <h4 className="text-lg font-bold text-slate-900 mt-1">Batangas Eastern Colleges</h4>
+                            <p className="text-slate-500">San Juan Batangas</p>
+                        </div>
+                        <div className="relative">
+                            <span className="absolute -left-[31px] top-2 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></span>
+                            <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">2008 - 2014</span>
+                            <h4 className="text-lg font-bold text-slate-900 mt-1">Kiling Elementary School</h4>
+                            <p className="text-slate-500">Kiling Sariaya Quezon</p>
+                        </div>
                     </div>
                 </div>
             </motion.div>
