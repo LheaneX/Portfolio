@@ -34,7 +34,7 @@ const Navbar = () => {
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-center">
                     <a href="#" onClick={() => scrollToSection('home')} className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-mono tracking-tighter">
-                        John Denver Macaraig
+                        Portfolio
                     </a>
 
                     {/* Desktop Menu */}
