@@ -1,7 +1,26 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, MessageSquare } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSend = (e) => {
+        e.preventDefault();
+        const { name, message } = formData;
+        const subject = `Portfolio Contact from ${name}`;
+        const body = `${message}%0D%0A%0D%0AFrom: ${name} (${formData.email})`;
+        window.location.href = `mailto:johndenver9900@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
     return (
         <div className="max-w-5xl mx-auto">
             <motion.div
@@ -31,7 +50,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-6">
-                        <a href="mailto:contact@example.com" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
+                        <a href="mailto:johndenver9900@gmail.com" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
                             <div className="p-3 bg-blue-50 text-primary rounded-full mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <Mail size={24} />
                             </div>
@@ -47,7 +66,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-slate-900">Location</h4>
-                                <p className="text-slate-500">Block 20 Lot 2 Anahaw 1 Silang Cavite</p>
+                                <p className="text-slate-500">Remote / Available Worldwide</p>
                             </div>
                         </div>
                     </div>
@@ -63,14 +82,17 @@ const Contact = () => {
                     {/* Decorative gradient blob */}
                     <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 rounded-full bg-primary/10 blur-2xl"></div>
 
-                    <form className="space-y-5 relative z-10">
+                    <form className="space-y-5 relative z-10" onSubmit={handleSend}>
                         <div>
                             <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">Name</label>
                             <input
                                 type="text"
                                 id="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                                 placeholder="John Doe"
+                                required
                             />
                         </div>
                         <div>
@@ -78,8 +100,11 @@ const Contact = () => {
                             <input
                                 type="email"
                                 id="email"
+                                value={formData.email}
+                                onChange={handleChange}
                                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                                 placeholder="john@example.com"
+                                required
                             />
                         </div>
                         <div>
@@ -87,14 +112,16 @@ const Contact = () => {
                             <textarea
                                 id="message"
                                 rows="4"
+                                value={formData.message}
+                                onChange={handleChange}
                                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
                                 placeholder="Tell me about your project..."
+                                required
                             ></textarea>
                         </div>
                         <button
                             type="submit"
                             className="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-primary/30 flex items-center justify-center"
-                            onClick={(e) => e.preventDefault()}
                         >
                             <Send size={18} className="mr-2" /> Send Message
                         </button>

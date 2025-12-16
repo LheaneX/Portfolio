@@ -15,7 +15,7 @@ const Footer = () => {
                         <a href="https://github.com/LheaneX" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors">
                             <Github size={20} />
                         </a>
-                        <a href="mailto:contact@example.com" className="text-gray-400 hover:text-gray-900 transition-colors">
+                        <a href="mailto:johndenver9900@gmail.com" className="text-gray-400 hover:text-gray-900 transition-colors">
                             <Mail size={20} />
                         </a>
                     </div>
