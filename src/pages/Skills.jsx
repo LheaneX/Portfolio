@@ -6,17 +6,17 @@ const Skills = () => {
         {
             category: "Frontend Development",
             icon: <Layout className="w-6 h-6" />,
-            skills: ["React", "JavaScript (ES6+)", "Tailwind CSS", "HTML5 & CSS3", "Vite", "Framer Motion"]
+            skills: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5 & CSS3", "Vite"]
         },
         {
             category: "Backend & DevOps",
             icon: <Server className="w-6 h-6" />,
-            skills: ["Node.js", "Express", "Docker", "RESTful APIs", "Nginx", "CI/CD"]
+            skills: ["Node.js", "Express", "Docker", "RESTful APIs", "Python", "Flask", "Django", "AWS"]
         },
         {
             category: "Tools & Workflow",
             icon: <Settings className="w-6 h-6" />,
-            skills: ["Git & GitHub", "VS Code", "Postman", "Figma", "Command Line", "Agile/Scrum"]
+            skills: ["Git & GitHub", "VS Code", "Cursor", "Figma", "Command Line"]
         }
     ];
 
