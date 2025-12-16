@@ -1,6 +1,17 @@
 services:
+  # Option 1: Docker Web Service (As requested)
   - type: web
-    name: portfolio
+    name: portfolio-docker
+    runtime: docker
+    envVars:
+      - key: PORT
+        value: 80
+    healthCheckPath: /
+    plan: free # Note: Free tier for Web Services might spin down on inactivity
+
+  # Option 2: Static Site (kept for reference)
+  - type: web
+    name: portfolio-static
     env: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
