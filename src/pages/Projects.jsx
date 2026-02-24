@@ -1,6 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Loader, Star, Code } from 'lucide-react';
+import { Github, ExternalLink, Loader, Star, Code, Globe } from 'lucide-react';
+
+// Map repo names to their deployed URLs
+const deployedLinks = {
+    'portfolio-website': 'https://portfolio-static-0y85.onrender.com',
+    'Philippine-DRRM-Simulation-Game': 'https://philippine-drrm-simulation-game-1.onrender.com',
+};
+
+// Custom descriptions for repos that lack one
+const customDescriptions = {
+    'portfolio-website': 'Professional portfolio website built with React, Vite & Tailwind CSS. Showcases projects, skills, and experience with modern animations.',
+    'Philippine-DRRM-Simulation-Game': 'An interactive disaster risk reduction simulation game for Philippine communities. Learn typhoon evacuation, go-bag packing, and hazard identification.',
+    'PAYROLLSYSTEM': 'A payroll management system for computing employee salaries, deductions, and generating payslips.',
+};
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -10,14 +23,22 @@ const Projects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch('https://api.github.com/users/LheaneX/repos');
+                const response = await fetch('https://api.github.com/users/LheaneX/repos?sort=updated&per_page=30');
                 if (!response.ok) {
                     throw new Error('Failed to fetch projects');
                 }
                 const data = await response.json();
-                const sortedData = data
+
+                // Inject deployed URLs and custom descriptions
+                const enrichedData = data.map((repo) => ({
+                    ...repo,
+                    homepage: repo.homepage || deployedLinks[repo.name] || null,
+                    description: repo.description || customDescriptions[repo.name] || null,
+                }));
+
+                const sortedData = enrichedData
                     .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-                    .slice(0, 6); // Limit to top 6 recently updated
+                    .slice(0, 6);
                 setProjects(sortedData);
             } catch (err) {
                 setError(err.message);
@@ -106,22 +127,34 @@ const Projects = () => {
                                         href={project.homepage}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-slate-400 hover:text-primary transition-colors"
-                                        title="View Demo"
+                                        className="text-slate-400 hover:text-green-500 transition-colors"
+                                        title="View Live Demo"
                                     >
-                                        <ExternalLink size={20} />
+                                        <Globe size={20} />
                                     </a>
                                 )}
                             </div>
                         </div>
 
                         <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                            {project.name}
+                            {project.name.replace(/-/g, ' ')}
                         </h3>
 
                         <p className="text-slate-600 mb-6 flex-grow text-sm leading-relaxed line-clamp-3">
                             {project.description || "No description provided for this project."}
                         </p>
+
+                        {/* Live Demo Button */}
+                        {project.homepage && (
+                            <a
+                                href={project.homepage}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mb-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-sm hover:shadow-md"
+                            >
+                                <Globe size={16} /> Live Demo
+                            </a>
+                        )}
 
                         <div className="pt-4 border-t border-slate-50 flex items-center justify-between text-xs font-medium text-slate-500">
                             <span className="flex items-center">
