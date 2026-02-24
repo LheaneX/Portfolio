@@ -53,10 +53,10 @@ const education = [
 ];
 
 const stats = [
-    { label: 'Projects Built', value: 10, suffix: '+', icon: <Rocket size={20} /> },
+    { label: 'Projects Built', value: 3, suffix: '+', icon: <Rocket size={20} /> },
     { label: 'Cups of Coffee', value: 999, suffix: '+', icon: <Coffee size={20} /> },
-    { label: 'Lines of Code', value: 50, suffix: 'K+', icon: <Code size={20} /> },
-    { label: 'Technologies', value: 15, suffix: '+', icon: <Sparkles size={20} /> },
+    { label: 'Lines of Code', value: 10, suffix: 'K+', icon: <Code size={20} /> },
+    { label: 'Technologies', value: 4, suffix: '+', icon: <Sparkles size={20} /> },
 ];
 
 // ─── Animated Counter Hook ──────────────────────────────────────────────────────
@@ -197,13 +197,13 @@ const About = () => {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 leading-tight">
                         Passionate About{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                            Building the Future
+                            Creating Something Meaningful?
                         </span>
                     </h2>
 
                     <div className="text-slate-600 text-lg leading-relaxed space-y-4">
                         <p>
-                            <TypingText text="I am a dedicated Computer Science Student with a strong focus on frontend development and DevOps practices. My journey in tech is driven by curiosity and a desire to build efficient, user-centric applications." />
+                            <TypingText text="I am a dedicated Computer Science Student with a strong focus on frontend and slightly backend development and DevOps practices. My journey in tech is driven by curiosity and a desire to build fun, efficient, user-centric applications." />
                         </p>
                     </div>
 
@@ -252,9 +252,9 @@ const About = () => {
                                 <p className="text-slate-400">{'// about-me.js'}</p>
                                 <p><span className="text-purple-600">const</span> <span className="text-blue-600">developer</span> = {'{'}</p>
                                 <p className="pl-4"><span className="text-green-600">name</span>: <span className="text-amber-600">"John Denver"</span>,</p>
-                                <p className="pl-4"><span className="text-green-600">role</span>: <span className="text-amber-600">"Frontend Engineer"</span>,</p>
-                                <p className="pl-4"><span className="text-green-600">loves</span>: <span className="text-amber-600">"Clean Code"</span>,</p>
-                                <p className="pl-4"><span className="text-green-600">coffee</span>: <span className="text-blue-600">true</span>,</p>
+                                <p className="pl-4"><span className="text-green-600">role</span>: <span className="text-amber-600">"Computer Science Student"</span>,</p>
+                                <p className="pl-4"><span className="text-green-600">loves</span>: <span className="text-amber-600">"you?"</span>,</p>
+                                <p className="pl-4"><span className="text-green-600">softdrinks</span>: <span className="text-blue-600">true</span>,</p>
                                 <p>{'}'}</p>
                             </div>
 
@@ -322,8 +322,8 @@ const About = () => {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`relative flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${activeTab === tab.id
-                                    ? 'text-white'
-                                    : 'text-slate-500 hover:text-slate-700'
+                                ? 'text-white'
+                                : 'text-slate-500 hover:text-slate-700'
                                 }`}
                         >
                             {activeTab === tab.id && (
@@ -363,8 +363,8 @@ const About = () => {
                                             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl opacity-20 group-hover:opacity-30 blur-sm transition-opacity" />
                                         )}
                                         <div className={`relative h-full bg-white rounded-xl p-6 border transition-all duration-300 hover:shadow-xl ${edu.active
-                                                ? 'border-primary/30 shadow-lg'
-                                                : 'border-slate-200 shadow-sm hover:border-slate-300'
+                                            ? 'border-primary/30 shadow-lg'
+                                            : 'border-slate-200 shadow-sm hover:border-slate-300'
                                             }`}>
                                             {edu.active && (
                                                 <span className="absolute top-4 right-4 px-2.5 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wider">
