@@ -54,7 +54,7 @@ const education = [
 
 const stats = [
     { label: 'Projects Built', value: 3, suffix: '+', icon: <Rocket size={20} /> },
-    { label: 'Cups of Coffee', value: 999, suffix: '+', icon: <Coffee size={20} /> },
+    { label: 'Bottle of Softdrinks', value: 999, suffix: '+', icon: <Coffee size={20} /> },
     { label: 'Lines of Code', value: 10, suffix: 'K+', icon: <Code size={20} /> },
     { label: 'Technologies', value: 4, suffix: '+', icon: <Sparkles size={20} /> },
 ];
