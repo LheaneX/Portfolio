@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion';
-import { Code, Database, Globe, Layers, Layout, Server, Settings, Terminal, PenTool, Cpu } from 'lucide-react';
+import { Layout, Server, Settings } from 'lucide-react';
 
 const Skills = () => {
     const skillsData = [
         {
             category: "Frontend Development",
-            icon: <Layout className="w-6 h-6" />,
+            icon: <Layout className="h-6 w-6" />,
             skills: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5 & CSS3", "Vite"]
         },
         {
             category: "Backend & DevOps",
-            icon: <Server className="w-6 h-6" />,
+            icon: <Server className="h-6 w-6" />,
             skills: ["Node.js", "Express", "Docker", "RESTful APIs", "Python", "Flask", "Django", "AWS"]
         },
         {
             category: "Tools & Workflow",
-            icon: <Settings className="w-6 h-6" />,
+            icon: <Settings className="h-6 w-6" />,
             skills: ["Git & GitHub", "VS Code", "Cursor", "Figma", "Command Line"]
         }
     ];
@@ -53,29 +53,31 @@ const Skills = () => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
             >
-                {skillsData.map((section, index) => (
+                {skillsData.map((section) => (
                     <motion.div
                         key={section.category}
                         variants={item}
-                        className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-primary/50 transition-colors"
+                        className="flex h-full w-full min-w-0 flex-col bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-lg hover:shadow-black/25"
                     >
-                        <div className="flex items-center mb-6 text-primary">
-                            <div className="p-3 bg-primary/10 rounded-xl mr-4">
+                        <div className="flex items-center mb-6 gap-4 min-w-0">
+                            <div className="flex shrink-0 items-center justify-center rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                                 {section.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-white">{section.category}</h3>
+                            <h3 className="min-w-0 flex-1 text-xl font-bold text-white leading-snug">{section.category}</h3>
                         </div>
 
                         <div className="flex flex-wrap gap-2">
                             {section.skills.map((skill) => (
-                                <span
+                                <motion.span
                                     key={skill}
-                                    className="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-medium hover:bg-primary/20 hover:text-white transition-all cursor-default border border-transparent hover:border-primary/30"
+                                    whileHover={{ scale: 1.05, y: -1 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-medium hover:bg-primary/20 hover:text-white transition-colors cursor-default border border-transparent hover:border-primary/30"
                                 >
                                     {skill}
-                                </span>
+                                </motion.span>
                             ))}
                         </div>
                     </motion.div>

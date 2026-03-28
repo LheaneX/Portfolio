@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
+import TiltIconFrame from '../components/TiltIconFrame';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -55,9 +56,14 @@ const Contact = () => {
 
                     <div className="space-y-6">
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=johndenver9900@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
-                            <div className="p-3 bg-blue-50 text-primary rounded-full mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                                <Mail size={24} />
-                            </div>
+                            <TiltIconFrame className="mr-4 shrink-0 rounded-full">
+                                <div
+                                    className="p-3 bg-blue-50 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-colors"
+                                    style={{ transformStyle: 'preserve-3d' }}
+                                >
+                                    <Mail size={24} style={{ transform: 'translateZ(10px)' }} />
+                                </div>
+                            </TiltIconFrame>
                             <div>
                                 <h4 className="font-semibold text-slate-900">Email Me</h4>
                                 <p className="text-slate-500">johndenver9900@gmail.com</p>
@@ -65,9 +71,14 @@ const Contact = () => {
                         </a>
 
                         <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div className="p-3 bg-indigo-50 text-indigo-600 rounded-full mr-4">
-                                <MapPin size={24} />
-                            </div>
+                            <TiltIconFrame className="mr-4 shrink-0 rounded-full">
+                                <div
+                                    className="p-3 bg-indigo-50 text-indigo-600 rounded-full"
+                                    style={{ transformStyle: 'preserve-3d' }}
+                                >
+                                    <MapPin size={24} style={{ transform: 'translateZ(10px)' }} />
+                                </div>
+                            </TiltIconFrame>
                             <div>
                                 <h4 className="font-semibold text-slate-900">Location</h4>
                                 <p className="text-slate-500">Remote / Available Worldwide</p>
@@ -123,12 +134,15 @@ const Contact = () => {
                                 required
                             ></textarea>
                         </div>
-                        <button
+                        <motion.button
                             type="submit"
-                            className="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-primary/30 flex items-center justify-center"
+                            whileHover={{ y: -3, scale: 1.01 }}
+                            whileTap={{ scale: 0.99 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                            className="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-primary/30 flex items-center justify-center"
                         >
                             <Send size={18} className="mr-2" /> Send Message
-                        </button>
+                        </motion.button>
                     </form>
                 </motion.div>
             </div>

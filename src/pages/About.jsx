@@ -214,7 +214,7 @@ const About = () => {
                         transition={{ delay: 0.5 }}
                         className="mt-8 flex flex-wrap gap-3"
                     >
-                        {['React', 'Docker', 'TypeScript', 'Vite', 'Node.js'].map((tech, i) => (
+                        {['React', 'Docker', 'TypeScript', 'Vite', 'Node.js'].map((tech) => (
                             <motion.span
                                 key={tech}
                                 whileHover={{ scale: 1.1, y: -2 }}
@@ -281,7 +281,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
-                {stats.map((stat, index) => {
+                {stats.map((stat) => {
                     const count = useCounter(stat.value, 2000, statsVisible);
                     return (
                         <motion.div

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Loader, Star, Code, Globe } from 'lucide-react';
+import TiltIconFrame from '../components/TiltIconFrame';
 
 // Map repo names to their deployed URLs
 const deployedLinks = {
@@ -109,9 +110,14 @@ const Projects = () => {
                         className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 flex flex-col h-full"
                     >
                         <div className="flex justify-between items-start mb-6">
-                            <div className="p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                                <Code size={24} />
-                            </div>
+                            <TiltIconFrame className="inline-block rounded-xl">
+                                <div
+                                    className="p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-inner"
+                                    style={{ transformStyle: 'preserve-3d' }}
+                                >
+                                    <Code size={24} style={{ transform: 'translateZ(12px)' }} />
+                                </div>
+                            </TiltIconFrame>
                             <div className="flex space-x-3">
                                 <a
                                     href={project.html_url}

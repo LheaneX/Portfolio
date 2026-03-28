@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
@@ -40,13 +41,16 @@ const Navbar = () => {
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-8">
                         {links.map((link) => (
-                            <button
+                            <motion.button
                                 key={link.to}
                                 onClick={() => scrollToSection(link.to)}
-                                className="text-sm font-medium text-gray-600 hover:text-primary transition-colors uppercase tracking-wide"
+                                whileHover={{ y: -1 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="group text-sm font-medium text-gray-600 hover:text-primary transition-colors uppercase tracking-wide relative pb-1"
                             >
                                 {link.name}
-                            </button>
+                                <span className="pointer-events-none absolute left-0 right-0 bottom-0 h-0.5 origin-center scale-x-0 rounded-full bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+                            </motion.button>
                         ))}
                     </div>
 
