@@ -1,11 +1,9 @@
-import { useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import About from './About';
 import Projects from './Projects';
 import Skills from './Skills';
 import Contact from './Contact';
-import Hero3D from '../components/canvas/Hero3D';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 
@@ -18,24 +16,6 @@ const Section = ({ id, children, className = "" }) => (
 );
 
 const Home = () => {
-    const heroMouseRef = useRef({ x: 0, y: 0 });
-
-    const setHeroPointerFromEvent = (clientX, clientY, currentTarget) => {
-        const rect = currentTarget.getBoundingClientRect();
-        heroMouseRef.current = {
-            x: ((clientX - rect.left) / rect.width) * 2 - 1,
-            y: -(((clientY - rect.top) / rect.height) * 2 - 1),
-        };
-    };
-
-    const onHeroPointerMove = (e) => {
-        setHeroPointerFromEvent(e.clientX, e.clientY, e.currentTarget);
-    };
-
-    const onHeroPointerLeave = () => {
-        heroMouseRef.current = { x: 0, y: 0 };
-    };
-
     return (
         <div className="bg-slate-50 relative overflow-hidden">
             {/* Background Decor */}
@@ -49,18 +29,15 @@ const Home = () => {
             {/* Hero Section */}
             <section
                 id="home"
-                onMouseMove={onHeroPointerMove}
-                onMouseLeave={onHeroPointerLeave}
-                onTouchMove={(e) => {
-                    const t = e.touches[0];
-                    if (t) setHeroPointerFromEvent(t.clientX, t.clientY, e.currentTarget);
-                }}
-                onTouchEnd={onHeroPointerLeave}
                 className="min-h-screen flex flex-col justify-center items-center relative z-10 pt-16"
             >
                 <div className="pointer-events-none absolute inset-0 z-0 opacity-90 md:opacity-100">
-                    <div className="h-full min-h-[70vh] w-full max-w-5xl mx-auto">
-                        <Hero3D mouseRef={heroMouseRef} />
+                    <div className="h-full min-h-[70vh] w-full max-w-5xl mx-auto px-4">
+                        <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/60 shadow-[0_20px_80px_-20px_rgba(15,23,42,0.2)] backdrop-blur-xl">
+                            <div className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/70 blur-3xl" />
+                            <div className="absolute right-8 top-10 h-36 w-36 rounded-full bg-indigo-200/60 blur-3xl" />
+                            <div className="absolute bottom-8 left-12 h-24 w-24 rounded-full bg-sky-200/70 blur-3xl" />
+                        </div>
                     </div>
                 </div>
 
@@ -98,7 +75,7 @@ const Home = () => {
                             View My Work
                         </motion.button>
                         <motion.a
-                            href="/resume.pdf"
+                            href="/Resume – John Denver Macaraig.pdf"
                             download
                             whileHover={{ scale: 1.03, y: -2 }}
                             whileTap={{ scale: 0.98 }}
