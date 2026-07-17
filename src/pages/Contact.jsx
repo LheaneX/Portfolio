@@ -1,150 +1,133 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send } from 'lucide-react';
-import TiltIconFrame from '../components/TiltIconFrame';
+import { SectionHeader } from '../components/ui/Section';
+import TiltCard from '../components/ui/TiltCard';
+import { profile } from '../data/site';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.id]: event.target.value });
     };
 
-    const handleSend = (e) => {
-        e.preventDefault();
+    const handleSend = (event) => {
+        event.preventDefault();
         const { name, message, email } = formData;
-        const subject = `Portfolio Contact from ${name}`;
-
-        // Use regular newlines and let encodeURIComponent handle them
-        const bodyContent = `${message}\n\nFrom: ${name} (${email})`;
-
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=johndenver9900@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
+        const subject = `Portfolio contact from ${name}`;
+        const body = `${message}\n\nFrom: ${name} (${email})`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.open(gmailUrl, '_blank');
     };
 
+    const inputClass =
+        'w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary';
+
     return (
-        <div className="max-w-5xl mx-auto">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-center mb-16"
-            >
-                <span className="text-primary font-semibold uppercase tracking-wider text-sm mb-2 block">Contact</span>
-                <h2 className="text-4xl font-bold text-slate-900">Get In Touch</h2>
-            </motion.div>
+        <div className="mx-auto max-w-5xl">
+            <SectionHeader
+                eyebrow="Contact"
+                title="Let's connect"
+                description="Open to internships, collaborations, and conversations about software engineering."
+            />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    className="space-y-4"
                 >
-                    <div className="bg-primary/5 rounded-2xl p-8 mb-8">
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4">Let's talk about your project</h3>
-                        <p className="text-slate-600 mb-0 leading-relaxed">
-                            I'm always interested in hearing about new projects and opportunities.
-                            Whether you have a question or just want to say hi, feel free to drop me a message!
-                        </p>
-                    </div>
-
-                    <div className="space-y-6">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=johndenver9900@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group">
-                            <TiltIconFrame className="mr-4 shrink-0 rounded-full">
-                                <div
-                                    className="p-3 bg-blue-50 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-colors"
-                                    style={{ transformStyle: 'preserve-3d' }}
-                                >
-                                    <Mail size={24} style={{ transform: 'translateZ(10px)' }} />
-                                </div>
-                            </TiltIconFrame>
-                            <div>
-                                <h4 className="font-semibold text-slate-900">Email Me</h4>
-                                <p className="text-slate-500">johndenver9900@gmail.com</p>
+                    <a
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}&su=Portfolio%20Inquiry`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all hover:border-primary/30 hover:shadow-md"
+                    >
+                        <TiltCard intensity={10} className="shrink-0">
+                            <div className="rounded-full bg-blue-50 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <Mail size={22} />
                             </div>
-                        </a>
+                        </TiltCard>
+                        <div>
+                            <h4 className="font-semibold text-slate-900">Email</h4>
+                            <p className="text-sm text-slate-500">{profile.email}</p>
+                        </div>
+                    </a>
 
-                        <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <TiltIconFrame className="mr-4 shrink-0 rounded-full">
-                                <div
-                                    className="p-3 bg-indigo-50 text-indigo-600 rounded-full"
-                                    style={{ transformStyle: 'preserve-3d' }}
-                                >
-                                    <MapPin size={24} style={{ transform: 'translateZ(10px)' }} />
-                                </div>
-                            </TiltIconFrame>
-                            <div>
-                                <h4 className="font-semibold text-slate-900">Location</h4>
-                                <p className="text-slate-500">Remote / Available Worldwide</p>
+                    <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4">
+                        <TiltCard intensity={10} className="shrink-0">
+                            <div className="rounded-full bg-indigo-50 p-3 text-indigo-600">
+                                <MapPin size={22} />
                             </div>
+                        </TiltCard>
+                        <div>
+                            <h4 className="font-semibold text-slate-900">Location</h4>
+                            <p className="text-sm text-slate-500">{profile.location}</p>
                         </div>
                     </div>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                <motion.form
+                    initial={{ opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden"
+                    onSubmit={handleSend}
+                    className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
                 >
-                    {/* Decorative gradient blob */}
-                    <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 rounded-full bg-primary/10 blur-2xl"></div>
-
-                    <form className="space-y-5 relative z-10" onSubmit={handleSend}>
-                        <div>
-                            <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                                placeholder="John Doe"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                                placeholder="john@example.com"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
-                            <textarea
-                                id="message"
-                                rows="4"
-                                value={formData.message}
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
-                                placeholder="Tell me about your project..."
-                                required
-                            ></textarea>
-                        </div>
-                        <motion.button
-                            type="submit"
-                            whileHover={{ y: -3, scale: 1.01 }}
-                            whileTap={{ scale: 0.99 }}
-                            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-                            className="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-primary/30 flex items-center justify-center"
-                        >
-                            <Send size={18} className="mr-2" /> Send Message
-                        </motion.button>
-                    </form>
-                </motion.div>
+                    <div>
+                        <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className={inputClass}
+                            placeholder="Your name"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className={inputClass}
+                            placeholder="you@example.com"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                            Message
+                        </label>
+                        <textarea
+                            id="message"
+                            rows="4"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className={`${inputClass} resize-none`}
+                            placeholder="Tell me about your project or opportunity..."
+                            required
+                        />
+                    </div>
+                    <motion.button
+                        type="submit"
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 font-semibold text-white transition-colors hover:bg-blue-700"
+                    >
+                        <Send size={18} />
+                        Send message
+                    </motion.button>
+                </motion.form>
             </div>
         </div>
     );

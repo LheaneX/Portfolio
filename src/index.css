@@ -4,9 +4,19 @@
 
 @layer base {
   body {
-    @apply bg-background text-text font-sans antialiased;
+    @apply bg-surface text-text font-sans antialiased;
   }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgb(148 163 184 / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(148 163 184 / 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
